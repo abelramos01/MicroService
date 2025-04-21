@@ -1,17 +1,21 @@
 import jwt from 'jsonwebtoken';
+
 const JWT_SECRET = process.env.JWT_SECRET
 
 const auth = (req, res, next) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '');
-  if (!token) return res.status(401).json({ error: 'Token não fornecido' });
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: 'Acesso Negado' })
+  };
 
   try {
-    const decoded = jwt.verify(token, 'segredo');
-    req.restaurantId = decoded.id;
-    next();
+    const decoded = jwt.verify(token.replace('barear ', ''), JWT_SECRET);
+    req.userId = decoded.id;
   } catch (err) {
-    return res.status(403).json({ error: 'Token inválido ou expirado' });
+    return res.status(401).json({ message: 'Token inválido ou expirado' });
   }
+  next();
 }
 
 

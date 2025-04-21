@@ -26,6 +26,15 @@ app.use(express.static(path.join(__dirname, '../../views')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../views/inicio.html'));
 });
+// Página de cadastro de usuário
+app.get('/user/register', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../views/cadastroUsuario.html'));
+});
+
+// Página de cadastro de restaurante
+app.get('/restaurant/register', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../views/cadastroRestaurante.html'));
+});
 
 // Rotas
 app.use('/user', userRoutes);

@@ -42,7 +42,7 @@ async function loginUser(req, res) {
     if (!match) return res.status(401).json({ error: 'Senha incorreta' });
 
     // Gera um token JWT com o id do usuário
-    const token = jwt.sign({ id: user.id },JWT_SECRET, {expiresIn: '1m'});
+    const token = jwt.sign({ id: user.id },JWT_SECRET, {expiresIn: '7d'});
     // Retorna o token como resposta
     res.status(200).json(token);
   } catch (err) {
