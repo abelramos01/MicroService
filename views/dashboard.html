@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="/js/dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+</head>
+
+<body>
+
+    <!-- ...mesmo <head> de antes -->
+
+    <body>
+
+        <!-- Área da navbar -->
+        <header>
+            <nav>
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="index.html">Início</a></li>
+                    <li><a class="nav-link" href="adicionar.html">Adicionar</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero is-info is-small">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <p class="title">Micro Delivery</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="box-cta">
+            <p class="has-text-centered">Confira os pratos abaixo:</p>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader">Carregando pratos...</div>
+
+        <!-- Filtros de categoria -->
+        <div id="category-tabs" class="tabs is-toggle is-centered is-medium hidden">
+            <ul></ul>
+        </div>
+
+
+        <!-- Container dos pratos -->
+        <section class="container" id="dish-section">
+            <div class="dishes"></div>
+        </section>
+
+        <!-- Mensagem de erro -->
+        <div id="error-msg" class="error hidden">Erro ao carregar os pratos.</div>
+
+        <footer class="footer has-text-centered">Feito por MIM</footer>
+
+    </body>
+
+</html>

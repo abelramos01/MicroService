@@ -1,0 +1,240 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Navbar */
+header {
+    background-color: #007BFF;
+    padding: 1rem 0;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #d1ecff;
+}
+
+/* Hero */
+.hero {
+    background-color: #00b894;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.hero .title {
+    font-size: 2.5rem;
+}
+
+/* Box CTA */
+.box-cta {
+    padding: 1.5rem 0;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Container e grid */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.dishes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Grid columns */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.column {
+    flex: 1 1 300px;
+    max-width: 300px;
+}
+
+/* Card */
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Card imagem */
+.card-image {
+    width: 100%;
+}
+
+.image.is-4by3 {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.image.is-4by3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Conteúdo do prato */
+.card-content {
+    padding: 1rem;
+}
+
+.content.book {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Meta do prato */
+.book-meta {
+    margin-bottom: 1rem;
+}
+
+.title.is-size-3 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.is-size-4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00b894;
+}
+
+.is-size-6 {
+    font-size: 0.95rem;
+    color: #777;
+}
+
+/* Botão */
+.button {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button-buy {
+    background-color: #00b894;
+    color: white;
+    font-weight: bold;
+}
+
+.button-buy:hover {
+    background-color: #019e7c;
+}
+
+.is-success {
+    background-color: #28a745;
+}
+
+.is-success:hover {
+    background-color: #218838;
+}
+
+.is-fullwidth {
+    width: 100%;
+}
+
+/* Modal button imagem (caso use) */
+.modal-button {
+    cursor: pointer;
+}
+
+
+a {
+    text-decoration: none; 
+    color: inherit;        
+}
+/* Footer */
+footer.footer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f1f1f1;
+    color: #555;
+    text-align: center;
+}
+
+/* Contraste ajustado */
+.is-size-6 {
+    font-size: 0.95rem;
+    color: #555; /* antes era #777 */
+}
+
+/* Loader */
+.loader {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: #00b894;
+}
+
+/* Mensagem de erro */
+.error {
+    text-align: center;
+    color: red;
+    margin: 1rem;
+    font-weight: bold;
+}
+
+/*Tags*/
+
+.hidden {
+    display: none;
+}
+
+.tabs {
+    margin-bottom: 2rem;
+}
+
+.tabs li a {
+    color: #333;
+    font-weight: bold;
+}
+
+.tabs li.is-active a {
+    background-color: #00b894;
+    color: white;
+    border-radius: 6px;
+}
+
