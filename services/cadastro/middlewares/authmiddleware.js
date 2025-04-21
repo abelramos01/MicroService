@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+const JWT_SECRET = process.env.JWT_SECRET
 
-function authenticateToken(req, res, next) {
+const auth = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
   if (!token) return res.status(401).json({ error: 'Token não fornecido' });
 
@@ -13,4 +14,5 @@ function authenticateToken(req, res, next) {
   }
 }
 
-export { authenticateToken };
+
+export default auth;
