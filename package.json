@@ -1,10 +1,11 @@
 {
   "name": "micro-ecommerce",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "inicio.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon cadastrousuario.js"
+    "dev": "nodemon services/cadastro/server.js"
   },
   "keywords": [],
   "author": "",

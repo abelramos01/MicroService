@@ -44,4 +44,4 @@ async function loginUser(req, res) {
 }
 
 // Exporta as funções para serem usadas em outros arquivos
-module.exports = { registerUser, loginUser };
+export { registerUser, loginUser };

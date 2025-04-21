@@ -19,12 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Pastas públicas
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static(path.join(__dirname, '../views')));
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../views')));
 
-// Página inicial opcional (caso tenha um index.html de boas-vindas)
+// Página inicial
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/index.html'));
+  res.sendFile(path.join(__dirname, '../../views/inicio.html'));
 });
 
 // Rotas
