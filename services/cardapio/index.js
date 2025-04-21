@@ -8,7 +8,7 @@ import dishRoutes from './routes/dishRoutes.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../views')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../views', 'index.html'));
+    res.sendFile(path.join(__dirname, '../../views', 'dashboard.html'));
 });
 
 app.use(express.json());
