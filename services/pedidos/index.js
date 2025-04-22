@@ -23,6 +23,34 @@ app.get('/api/orders', async (req, res) => {
   res.send(orders);
 }) 
 
+app.post('/api/orders', async (req, res) => {
+  try {
+    const { user_id, restaurant_id, total, items } = req.body;
+
+    const newOrder = await prisma.orders.create({
+      data: {
+        user_id,
+        restaurant_id,
+        total,
+        order_items: {
+          create: items.map(item => ({
+            dish_id: item.dish_id,
+            quantity: item.quantity,
+          }))
+        }
+      },
+      include: {
+        order_items: true
+      }
+    });
+
+    res.status(201).json(newOrder);
+  } catch (error) {
+    console.error('Erro ao criar pedido:', error);
+    res.status(500).json({ error: 'Erro ao criar pedido' });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
