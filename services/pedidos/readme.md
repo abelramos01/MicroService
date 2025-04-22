@@ -12,4 +12,3 @@ fetch('/api/orders')
   .catch(error => {
     console.error('Erro ao buscar pedidos:', error);
   });
-
