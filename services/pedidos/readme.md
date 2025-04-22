@@ -15,3 +15,33 @@ fetch('/api/orders')
     console.error('Erro ao buscar pedidos:', error);
   });
 ```
+e essa adicionaria um pedido ao banco:
+```
+fetch('/api/orders', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    user_id: 1,
+    restaurant_id: 2,
+    total: 89.90,
+    items: [
+      { dish_id: 3, quantity: 2 },
+      { dish_id: 5, quantity: 1 }
+    ]
+  })
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Erro ao adicionar o pedido');
+  }
+  return response.json();
+})
+.then(data => {
+  console.log('Pedido criado com sucesso:', data);
+})
+.catch(error => {
+  console.error('Erro:', error);
+});
+```
