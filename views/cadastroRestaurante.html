@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login/Cadastro - Restaurante</title>
+</head>
+<body>
+  <h1>Restaurante</h1>
+
+  <h2>Login</h2>
+  <form action="/login-restaurante" method="POST">
+    <input type="email" name="email" placeholder="Email" required /><br>
+    <input type="password" name="password" placeholder="Senha" required /><br>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <h2>Cadastro</h2>
+  <form action="/cadastro-restaurante" method="POST">
+    <input type="text" name="name" placeholder="Nome do Restaurante" required /><br>
+    <input type="email" name="email" placeholder="Email" required /><br>
+    <input type="password" name="password" placeholder="Senha" required /><br>
+    <input type="text" name="address" placeholder="Endereço" /><br>
+    <button type="submit">Cadastrar</button>
+  </form>
+</body>
+</html>

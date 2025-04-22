@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar</title>
+    <script src="../public/js/adicionar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/css/adicionar.css"/>
+</head>
+
+<body>
+
+    <!--Área da navbar-->
+    <header>
+        <nav>
+            <ul class="nav-list">
+                <li><a class="nav-link" href="index.html">Inicio</a></li>
+                <li><a class="nav-link" href="adicionar.html">Adicionar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!--Corpo da página-->
+        <center>
+            <div class="Titulo">
+                <h2>Adicionar prato</h2>
+            </div>
+        </center>
+
+
+        <!--Container com formulário de adicionar preto-->
+        <div id="container">
+            <div id="container-form">
+                <form id="dishes_form" enctype="multipart/form-data">
+                    <label for="dishes-name">Nome do prato</label>
+                    <input type="text" id="dishes-name" name="name" placeholder="Nome do prato" required>
+                    <br>
+                    <label for="dishes-price">Preço do prato</label>
+                    <input type="number" id="dishes-price" name="price" placeholder="Preço do prato" required>
+                    <br>
+                    <label for="category">Categoria do prato</label>
+                    <select id="category" name="category" required>
+                        <option value="">Selecione uma categoria</option>
+                    </select>
+
+                    <p>Descrição</p>
+                    <textarea id="description" name="description" required></textarea>
+                    <br>
+                    <button class="botao" type="submit">Enviar</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer has-text-centered">Feito por Abel</footer>
+
+</body>
+</html>

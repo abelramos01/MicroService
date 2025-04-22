@@ -1,10 +1,13 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     initEditForm(); 
 });
 
+// função principal para carregar os dados do prato e preencher o formulário de edição
 async function initEditForm() {
-    const container = document.querySelector('.dishes-edit-container');
+    const container = document.querySelector('.dishes-edit-container'); // container onde o formulário será inserido
 
+    // pega o parâmetro "id" da URL para saber qual prato deve ser editado
     const urlParams = new URLSearchParams(window.location.search);
     const dishId = urlParams.get('id');
 
@@ -14,15 +17,18 @@ async function initEditForm() {
     }
 
     try {
+        // requisição à API para obter os dados do prato específico
         const response = await fetch(`http://localhost:3000/dishes/${dishId}`);
         if (!response.ok) throw new Error('Erro ao buscar prato');
 
-        const dish = await response.json();
+        const dish = await response.json(); // converte a resposta em JSON
 
+        // função que monta o formulário HTML com os dados do prato preenchidos
         function loadingForm(dish) {
             const div = document.createElement('div');
             div.className = "container";
 
+            // formulário com valores preenchidos do prato
             div.innerHTML = `
             <center>
                 <div id="container-form">
@@ -49,16 +55,20 @@ async function initEditForm() {
             return div;
         }
 
+        // cria o formulário e adiciona ao container
         const formElement = loadingForm(dish);
         container.appendChild(formElement);
 
-        // carregar categorias
+        // referência ao elemento select de categorias
         const categorySelect = document.querySelector('#category');
 
+        // requisição para buscar as categorias disponíveis
         const catResponse = await fetch('http://localhost:3000/dishes/categories');
         if (!catResponse.ok) throw new Error('Erro ao buscar categorias');
 
-        const categories = await catResponse.json();
+        const categories = await catResponse.json(); // converte a resposta em JSON
+
+        // adiciona as categorias ao select e seleciona a atual do prato
         categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category.id;
@@ -67,11 +77,13 @@ async function initEditForm() {
             categorySelect.appendChild(option);
         });
 
-        // adicionar event listener após criar o form
+        // adiciona o event listener de envio do formulário
         document.getElementById('dishes_form').addEventListener('submit', async (event) => {
-            event.preventDefault();
+            event.preventDefault(); // evita o comportamento padrão de envio do formulário
 
             const form = event.target;
+
+            // coleta os dados do formulário
             const data = {
                 name: form.name.value,
                 description: form.description.value,
@@ -80,6 +92,7 @@ async function initEditForm() {
             };
 
             try {
+                // envia os dados atualizados para a API usando método PUT
                 const response = await fetch(`http://localhost:3000/dishes/${dishId}`, {
                     method: 'PUT',
                     headers: {
@@ -90,7 +103,7 @@ async function initEditForm() {
 
                 if (response.ok) {
                     alert('Prato editado com sucesso!');
-                    window.location.href = '/'; 
+                    window.location.href = '/'; // redireciona para a página principal
                 } else {
                     alert('Erro ao editar prato.');
                 }
