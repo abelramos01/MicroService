@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login/Cadastro - Usuário</title>
+  <script src="/js/user.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/user.css"/>
 </head>
 <body>
-  <h1>Usuário</h1>
-
-  <h2>Login</h2>
-  <form action="/login-usuario" method="POST">
-    <input type="email" name="email" placeholder="Email" required /><br>
-    <input type="password" name="password" placeholder="Senha" required /><br>
-    <button type="submit">Entrar</button>
-  </form>
-
-  <h2>Cadastro</h2>
-  <form action="/cadastro-usuario" method="POST">
-    <input type="text" name="name" placeholder="Nome" required /><br>
-    <input type="email" name="email" placeholder="Email" required /><br>
-    <input type="password" name="password" placeholder="Senha" required /><br>
+  <h1>Cadastro</h1>
+  <form id="form-cadastro">
+    <input type="text" id="name" name="name" placeholder="Nome" required /><br>
+    <input type="email" id="email"  name="email" placeholder="Email" required /><br>
+    <input type="password" id="password"  name="password" placeholder="Senha" required /><br>
     <button type="submit">Cadastrar</button>
   </form>
 </body>

@@ -16,7 +16,6 @@ model categories {
 model deliveries {
   id               Int       @id @default(autoincrement())
   order_id         Int?
-  delivery_person  String?   @db.VarChar(100)
   current_location String?   @db.VarChar(100)
   delivered_at     DateTime? @db.Timestamp(0)
   orders           orders?   @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "deliveries_ibfk_1")

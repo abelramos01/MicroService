@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
   };
 
   try {
-    const decoded = jwt.verify(token.replace('barear ', ''), JWT_SECRET);
+    const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET);
     req.userId = decoded.id;
   } catch (err) {
     return res.status(401).json({ message: 'Token inválido ou expirado' });

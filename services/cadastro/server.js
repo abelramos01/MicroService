@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import auth from '../cadastro/middlewares/authmiddleware.js';
 
 import userRoutes from './routes/user.js';
 import restaurantRoutes from './routes/restaurant.js';
@@ -34,6 +35,18 @@ app.get('/user/register', (req, res) => {
 // Página de cadastro de restaurante
 app.get('/restaurant/register', (req, res) => {
   res.sendFile(path.join(__dirname, '../../views/cadastroRestaurante.html'));
+});
+
+app.get('/user/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../views/loginUsuario.html'));
+});
+
+app.get('/restaurant/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../views/loginRestaurante.html'));
+});
+
+app.get('/dashboard', auth, (req, res) => {
+  res.sendFile(path.join(__dirname, '../../views/dashboard.html'));
 });
 
 // Rotas
