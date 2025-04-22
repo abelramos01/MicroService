@@ -21,7 +21,7 @@ Com o parâmetro basta procurar com fetch usando o js através da Url e usar um 
 
 Apartir disso a variável resposta terá todas as tabelas e valores dos campos das tabelas em array com cada insert sendo um objeto possível de buscar os valores isso foi feito com todas as tabelas.
 
-`   const reviews = await fetch("http://localhost:3000/api/reviews");
+    const reviews = await fetch("http://localhost:3000/api/reviews");
     const restaurantinho = await fetch("http://localhost:3000/api/restaurants");
     const pessoa = await fetch("http://localhost:3000/api/users");
     const pedido = await fetch("http://localhost:3000/api/orders");
