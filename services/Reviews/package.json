@@ -1,0 +1,18 @@
+{
+  "name": "microservicos",
+  "version": "1.0.0",
+  "description": "microservicos para o Jacques",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Arthur Abel Isais e Arthur Lima",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "prisma": "^6.6.0"
+  }
+}

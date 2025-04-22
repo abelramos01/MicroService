@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(100)
+  dishes dishes[]
+}
+
+model deliveries {
+  id               Int       @id @default(autoincrement())
+  order_id         Int?
+  delivery_person  String?   @db.VarChar(100)
+  current_location String?   @db.VarChar(100)
+  delivered_at     DateTime? @db.Timestamp(0)
+  orders           orders?   @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "deliveries_ibfk_1")
+
+  @@index([order_id], map: "order_id")
+}
+
+model dishes {
+  id            Int           @id @default(autoincrement())
+  name          String        @db.VarChar(100)
+  description   String?       @db.Text
+  price         Decimal       @db.Decimal(10, 2)
+  restaurant_id Int?
+  category_id   Int?
+  restaurants   restaurants?  @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "dishes_ibfk_1")
+  categories    categories?   @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "dishes_ibfk_2")
+  order_items   order_items[]
+
+  @@index([category_id], map: "category_id")
+  @@index([restaurant_id], map: "restaurant_id")
+}
+
+model order_items {
+  id       Int     @id @default(autoincrement())
+  order_id Int?
+  dish_id  Int?
+  quantity Int?
+  orders   orders? @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "order_items_ibfk_1")
+  dishes   dishes? @relation(fields: [dish_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "order_items_ibfk_2")
+
+  @@index([dish_id], map: "dish_id")
+  @@index([order_id], map: "order_id")
+}
+
+model orders {
+  id            Int            @id @default(autoincrement())
+  user_id       Int?
+  restaurant_id Int?
+  status        orders_status? @default(pendente)
+  total         Decimal?       @db.Decimal(10, 2)
+  created_at    DateTime?      @default(now()) @db.Timestamp(0)
+  deliveries    deliveries[]
+  order_items   order_items[]
+  users         users?         @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "orders_ibfk_1")
+  restaurants   restaurants?   @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "orders_ibfk_2")
+  reviews       reviews[]
+
+  @@index([restaurant_id], map: "restaurant_id")
+  @@index([user_id], map: "user_id")
+}
+
+model restaurants {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(100)
+  email      String    @unique(map: "email") @db.VarChar(100)
+  password   String    @db.VarChar(255)
+  address    String?   @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  dishes     dishes[]
+  orders     orders[]
+  reviews    reviews[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model reviews {
+  id            Int          @id @default(autoincrement())
+  user_id       Int?
+  order_id      Int?
+  restaurant_id Int?
+  rating        Int?
+  comment       String?      @db.Text
+  created_at    DateTime?    @default(now()) @db.Timestamp(0)
+  orders        orders?      @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reviews_ibfk_1")
+  restaurants   restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reviews_ibfk_2")
+  users         users?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reviews_ibfk_3")
+
+  @@index([order_id], map: "order_id")
+  @@index([restaurant_id], map: "restaurant_id")
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(100)
+  email      String    @unique(map: "email") @db.VarChar(100)
+  password   String    @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  orders     orders[]
+  reviews    reviews[]
+}
+
+enum orders_status {
+  pendente
+  em_preparo @map("em preparo")
+  a_caminho  @map("a caminho")
+  entregue
+}

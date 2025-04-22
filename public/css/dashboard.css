@@ -181,6 +181,11 @@ header {
     cursor: pointer;
 }
 
+
+a {
+    text-decoration: none; 
+    color: inherit;        
+}
 /* Footer */
 footer.footer {
     margin-top: 2rem;
@@ -189,3 +194,47 @@ footer.footer {
     color: #555;
     text-align: center;
 }
+
+/* Contraste ajustado */
+.is-size-6 {
+    font-size: 0.95rem;
+    color: #555; /* antes era #777 */
+}
+
+/* Loader */
+.loader {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: #00b894;
+}
+
+/* Mensagem de erro */
+.error {
+    text-align: center;
+    color: red;
+    margin: 1rem;
+    font-weight: bold;
+}
+
+/*Tags*/
+
+.hidden {
+    display: none;
+}
+
+.tabs {
+    margin-bottom: 2rem;
+}
+
+.tabs li a {
+    color: #333;
+    font-weight: bold;
+}
+
+.tabs li.is-active a {
+    background-color: #00b894;
+    color: white;
+    border-radius: 6px;
+}
+
