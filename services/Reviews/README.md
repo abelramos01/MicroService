@@ -12,12 +12,14 @@ Isso deixa como parâmetro na url http://localhost:3000/api/reviews a tabela em 
 
 No meu index.html na view, foi puxado do reviews.js um GET da url. O parâmetro de id do restaurante será passado pela url.
 o parâmetro é buscado com:
-`    const params = new URLSearchParams(document.location.search)
-    let restaurante = params.get("restaurant");`
+`const params = new URLSearchParams(document.location.search)
+let restaurante = params.get("restaurant");
+`
 
 Com o parâmetro basta procurar com fetch usando o js através da Url e usar um método json().
-`    const reviews = await fetch("http://localhost:3000/api/reviews");
-    const resposta = await reviews.json();`
+`const reviews = await fetch("http://localhost:3000/api/reviews");
+const resposta = await reviews.json();
+`
 
 Apartir disso a variável resposta terá todas as tabelas e valores dos campos das tabelas em array com cada insert sendo um objeto possível de buscar os valores isso foi feito com todas as tabelas.
 
@@ -34,4 +36,3 @@ Apartir disso a variável resposta terá todas as tabelas e valores dos campos d
     const itemsOrdem = await itemsOrdemF.json();
     const dishes = await dishesF.json();
     const lojinha = await restaurantinho.json();
-    `
