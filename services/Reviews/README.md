@@ -8,10 +8,12 @@ iniciado a conexão então é atribuido a páginas como /api/nome_tabela a tabel
       res.send(reviews)
 });
 `
+
 Isso deixa como parâmetro na url http://localhost:3000/api/reviews a tabela em formato de array com object dentro ou melhor, conforme são as API's.
 
 No meu index.html na view, foi puxado do reviews.js um GET da url. O parâmetro de id do restaurante será passado pela url.
 o parâmetro é buscado com:
+
 `const params = new URLSearchParams(document.location.search)
 let restaurante = params.get("restaurant");
 `
