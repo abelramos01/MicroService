@@ -15,7 +15,7 @@ export const getCategories = async (req, res) => {
         // em caso de erro, retorna status 500 com mensagem de erro
         res.status(500).json({ error: 'Erro ao buscar categorias' });
     }
-};
+}
 
 // função para buscar todos os pratos (dishes) com suas respectivas categorias
 export const getAllDishes = async (req, res) => {
